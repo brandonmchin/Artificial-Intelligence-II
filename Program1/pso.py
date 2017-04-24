@@ -17,8 +17,8 @@ def random_velocity():
 	return [x,y]
 
 def update_velocity(position, velocity, pbest, gbest):
-	c1 = 1
-	c2 = 1
+	c1 = 0.4
+	c2 = 0.1
 	velocity[0] = round(velocity[0] + (c1*random.random()*(pbest[0]-position[0])) + (c2*random.random()*(gbest[0]-position[0])))
 	velocity[1] = round(velocity[1] + (c1*random.random()*(pbest[1]-position[1])) + (c2*random.random()*(gbest[1]-position[1])))
 	return velocity
@@ -29,8 +29,9 @@ def update_position(position, velocity, z_space):
 	position[2] = z_space[position[0]][position[1]]
 	return position
 
-def pso(x, y, z, population_size, max_epochs=100):
-	# description
+def pso(x, y, z, population_size=20, max_epochs=100):
+	# A population of canditate solutions, called particles, move around the search space at certain velocities.
+	# Each particle's movement is guided toward the best known position based on their individual best and the global best
 
 	population = [Particle(x, y, z) for i in range(population_size)]    # initialize particles
 	
