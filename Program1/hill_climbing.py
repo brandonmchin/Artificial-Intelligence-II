@@ -1,6 +1,6 @@
 import random
 
-def calc_best(x, y, z_space, delta=0):
+def calc_best(x, y, z_space, delta=0.0):
 	# delta equals the change between current and new z position
 
 	current_z = z_space[x][y]
@@ -41,7 +41,8 @@ def hill_climbing(x, y, z, max_evals=100):
     current_x = random.randrange(0, len(x))
     current_y = random.randrange(0, len(y))
 
-    print("Initial: [%d,%d], %f" % (current_x, current_y, z[current_x][current_y]))
+    initial_z = z[current_x][current_y] 
+    print("Initial: [%d,%d], %f" % (current_x, current_y, initial_z))
 
     evals = 0
     while evals < max_evals:
@@ -59,5 +60,5 @@ def hill_climbing(x, y, z, max_evals=100):
         if delta == 0:
             break    # a local minimum was found
 
-    print("Best: %f" % z[current_x][current_y])
-    return z[current_x][current_y]
+    print("Iterations: %d, Best: %f" % (evals, z[current_x][current_y]))
+    return z[current_x][current_y], initial_z
