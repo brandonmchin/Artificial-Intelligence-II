@@ -57,4 +57,4 @@ def pso(x, y, z, population_size=20, max_epochs=100):
 					print("New Global Best! [%d,%d,%f]" % (best[0], best[1], best[2]))
 		epochs = epochs + 1
 
-	return best[2], initial[2]
+	return best, initial

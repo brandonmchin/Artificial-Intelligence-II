@@ -54,7 +54,7 @@ def sim_annealing(x, y, z, max_evals=100):
 	current_y = random.randrange(0, len(y))
 
 	initial = [current_x, current_y, z[current_x][current_y]]
-	print("[%d,%d,%f]" % (current_x, current_y, initial[2]))
+	print("[%d,%d,%f]" % (initial[0], initial[1], initial[2]))
 
 	while T > T_min:
 		print("Temperature: %f" % T)
@@ -75,4 +75,4 @@ def sim_annealing(x, y, z, max_evals=100):
 
 	print("\nFinal: %f" % z[current_x][current_y])
 
-	return z[current_x][current_y], initial[2]
+	return [current_x, current_y, z[current_x][current_y]], initial

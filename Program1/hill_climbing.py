@@ -41,8 +41,8 @@ def hill_climbing(x, y, z, max_evals=100):
     current_x = random.randrange(0, len(x))
     current_y = random.randrange(0, len(y))
 
-    initial_z = z[current_x][current_y] 
-    print("Initial: [%d,%d], %f" % (current_x, current_y, initial_z))
+    initial = [current_x, current_y, z[current_x][current_y]]
+    print("Initial: [%d,%d,%f]" % (initial[0], initial[1], initial[2]))
 
     evals = 0
     while evals < max_evals:
@@ -61,4 +61,4 @@ def hill_climbing(x, y, z, max_evals=100):
             break    # a local minimum was found
 
     print("Iterations: %d, Best: %f" % (evals, z[current_x][current_y]))
-    return z[current_x][current_y], initial_z
+    return [current_x, current_y, z[current_x][current_y]], initial
